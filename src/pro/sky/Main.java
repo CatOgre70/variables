@@ -1,5 +1,7 @@
 package pro.sky;
 
+import java.util.ArrayList;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -23,7 +25,9 @@ public class Main {
 
         float firstBoxerWeight = 78.2f, secondBoxerWeight = 82.7f; // Boxer weights in kilograms
         System.out.println("Total weights of meat bags on arena: " + (firstBoxerWeight + secondBoxerWeight)
-                + "\nThe difference in meat bags weight: " + Math.abs(firstBoxerWeight-secondBoxerWeight));
+                + " kilograms"
+                + "\nThe difference in meat bags weight: " + Math.abs(firstBoxerWeight-secondBoxerWeight)
+                + " kilograms");
 
         // Task 3. Sportsmen weight control
         // Task conditions
@@ -69,7 +73,7 @@ public class Main {
         double mashaNewAnnualSalary = mashaOldAnnualSalary * 1.1,
                 denisNewAnnualSalary = denisOldAnnualSalary * 1.1,
                 kristinaNewAnnualSalary = kristinaOldAnnualSalary * 1.1;
-        int roublesNewAnnual =  (int) Math.floor(mashaNewAnnualSalary);
+        int roublesNewAnnual = (int) Math.floor(mashaNewAnnualSalary);
         int penniesNewAnnual = (int) Math.round((mashaNewAnnualSalary - roublesNewAnnual) * 100);
         int roublesDiffAnnual = (int) Math.floor(mashaNewAnnualSalary - mashaOldAnnualSalary);
         int penniesDiffAnnual = (int) Math.round((mashaNewAnnualSalary - mashaOldAnnualSalary
@@ -78,7 +82,7 @@ public class Main {
                 penniesNewAnnual + " копеек. Годовой доход вырос на " + roublesDiffAnnual + " рублей, "
                 + penniesDiffAnnual + " копеек");
 
-        roublesNewAnnual =  (int) Math.floor(denisNewAnnualSalary);
+        roublesNewAnnual = (int) Math.floor(denisNewAnnualSalary);
         penniesNewAnnual = (int) Math.round((denisNewAnnualSalary - roublesNewAnnual) * 100);
         roublesDiffAnnual = (int) Math.floor(denisNewAnnualSalary - denisOldAnnualSalary);
         penniesDiffAnnual = (int) Math.round((denisNewAnnualSalary - denisOldAnnualSalary
@@ -87,7 +91,7 @@ public class Main {
                 penniesNewAnnual + " копеек. Годовой доход вырос на " + roublesDiffAnnual + " рублей, "
                 + penniesDiffAnnual + " копеек");
 
-        roublesNewAnnual =  (int) Math.floor(kristinaNewAnnualSalary);
+        roublesNewAnnual = (int) Math.floor(kristinaNewAnnualSalary);
         penniesNewAnnual = (int) Math.round((kristinaNewAnnualSalary - roublesNewAnnual) * 100);
         roublesDiffAnnual = (int) Math.floor(kristinaNewAnnualSalary - kristinaOldAnnualSalary);
         penniesDiffAnnual = (int) Math.round((kristinaNewAnnualSalary - kristinaOldAnnualSalary
@@ -97,5 +101,60 @@ public class Main {
                 + penniesDiffAnnual + " копеек");
 
         // Well, this task is for arrays lesson, I think :)
+
+        // Task 6. Calculations
+
+        int a = 12, b = 27, c = 44, d = 15, e = 9;
+        int result = a * (b + (c - d * e));
+
+        System.out.println("Result = " + result + "\nOpposite result = " + (-result));
+
+        // Are you sure that it is a difficult task? :)
+
+        // Task 7. Changing numbers
+
+        a = 5;
+        b = 7;
+
+        System.out.println("initial values: a = " + a + ", b = " + b);
+
+        a = a + b;
+        b = a - b;
+        a = a - b;
+
+        System.out.println("Result: a = " + a + ", b = " + b);
+
+        // Task 8. Middle figure
+        // I wrote decimal expansion algorithm for any int variable
+
+        // int intVar = 2_567_732;
+        // int intVar = 0;
+        // int intVar = Integer.MAX_VALUE;
+        // int intVar = Integer.MIN_VALUE;
+        // int intVar = 256;
+        int intVar = 256;
+
+        int intVarTemp = intVar, divRemainder;
+        ArrayList<Integer> figures = new ArrayList<>();
+
+        do {
+            divRemainder = intVarTemp % 10;
+            figures.add(Math.abs(divRemainder));
+            intVarTemp = (intVarTemp - divRemainder) / 10;
+        } while(intVarTemp / 10 != 0);
+        if(intVarTemp != 0) {
+            figures.add(Math.abs(intVarTemp));
+        }
+
+        System.out.println("Decimal expansion of intVar = " + intVar);
+        for(int i = 0; i < figures.size(); i++) {
+            System.out.println("Figure #" + (i+1) + " (10 in power " + i + ") - " + figures.get(i));
+        }
+
+        if(figures.size() > 1){
+            System.out.println("\nSecond figure - " + figures.get(1));
+        }
+
+
     }
 }
